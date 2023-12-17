@@ -287,7 +287,7 @@ a.icon-motor {
 
 /* PROFILE USER */
 .profileuser {
-    margin-top: 100px;
+    margin: 100px 0px 80px 120px;
 }
 
 .profileuser .nama-user {
@@ -327,11 +327,26 @@ a.icon-motor {
     font-size: 20px;
     line-height: 30px;
     letter-spacing: 0.01em;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .profileuser .data-user form input {
-    height: 45px;
-    border-radius: 8px;
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.profileuser .data-user form select {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .profileuser .data-user form .form {

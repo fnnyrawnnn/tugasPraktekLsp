@@ -39,8 +39,8 @@
                                     class="btn btn-danger text-white">Hapus</a>
                             <a href="/admindetailpendaftaran/{{ $item->id }}"
                                     class="btn btn-info text-white">Detail</a>
-                            <a href="/admindetailpendaftaran/{{ $item->id }}/cetak/pdf"
-                                    class="btn btn-primary text-white">Cetak</a>
+                            <a href="/admincetakpdf/{{ $item->id }}"
+                                    class="btn btn-primary text-white" target="_blank">Cetak</a>
                             </td>
                         </tr>
                     @endforeach

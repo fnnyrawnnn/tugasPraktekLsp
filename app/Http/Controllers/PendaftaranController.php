@@ -10,6 +10,8 @@ use App\Models\Pendaftaran;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class PendaftaranController extends Controller
 {
@@ -106,11 +108,15 @@ class PendaftaranController extends Controller
     }
 
     public function usercetakpendaftaran(){
-        $mpdf = new \Mpdf\Mpdf();
         $user = Auth::user();
-        $pendaftarans = $user->pendaftarans;
+        $items = $user->pendaftarans;
 
-        $mpdf->WriteHTML(view('user/detailpendaftaran', ['pendaftarans' => $pendaftarans]));
-        $mpdf->Output($pendaftarans->nama_lengkap . '-bukti pendaftaran.pdf', 'D');
+        if (request('output') == 'pdf'){
+            $pdf = Pdf::loadView('user/usercetakpdf', compact('items'));
+            $namaFile = $items->nama_lengkap . "-bukti pendaftaran.pdf";
+            return $pdf->download($namaFile);
+        }
+
+        return view('user/usercetakpdf', compact('items'));
     }
 }

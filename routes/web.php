@@ -43,7 +43,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'index'])->name('pendaftaran');
     Route::post('/pendaftaran/create', [PendaftaranController::class, 'create'])->name('create.pendaftaran');
     Route::get('/detailpendaftaran', [PendaftaranController::class, 'detailpendaftaran'])->name('detail.pendaftaran');
-    Route::get('/detailpendaftaran/user/cetak/pdf', [PendaftaranController::class, 'usercetakpendaftaran']);
+
+    Route::get('/usercetakpdf', [PendaftaranController::class, 'usercetakpendaftaran']);
 
     Route::post('/getkabupaten', [PendaftaranController::class, 'getkabupaten'])->name('getkabupaten');
     Route::post('/getkecamatan', [PendaftaranController::class, 'getkecamatan'])->name('getkecamatan');
@@ -58,7 +59,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admindetailpendaftaran/{id}', [AdminController::class, 'detailuserpendaftaran'])->name('detailpendaftaran');
     Route::get('/pendaftaran/{id}/delete', [AdminController::class, 'destroypendaftaran']);
     
-    Route::get('/admindetailpendaftaran/{id}/cetak/pdf', [AdminController::class, 'cetakpendaftaran']);
+    Route::get('/admincetakpdf/{id}', [AdminController::class, 'cetakpdf'])->name('admin.cetak.pdf');
 
     Route::post('/getkabupatenadmin', [AdminController::class, 'getkabupaten'])->name('getkabupatenadmin');
     Route::post('/getkecamatanadmin', [AdminController::class, 'getkecamatan'])->name('getkecamatanadmin');

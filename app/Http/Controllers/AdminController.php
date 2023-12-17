@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\District;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -234,14 +235,15 @@ class AdminController extends Controller
         echo $option;
     }
 
-    public function cetakpendaftaran($id){
-        $mpdf = new \Mpdf\Mpdf();
-        $userCount = User::count();
-        $pendaftaranCount = Pendaftaran::count();
-        $data['pendaftarans'] = Pendaftaran::findOrFail($id);
-        $pendaftaran = Pendaftaran::findOrFail($id);
+    public function cetakpdf($id){
+        $items = Pendaftaran::findOrFail($id);
 
-        $mpdf->WriteHTML(view('admin/detailuserpendaftaran', $data, ['user_count' => $userCount, 'pendaftaran_count' => $pendaftaranCount]));
-        $mpdf->Output('admin' . $pendaftaran->nama_lengkap . '-bukti pendaftaran.pdf', 'D');
+        if (request('output') == 'pdf'){
+            $pdf = Pdf::loadView('admin/admincetakpdf', compact('items'));
+            $namaFile = $items->nama_lengkap . "-bukti pendaftaran.pdf";
+            return $pdf->download($namaFile);
+        }
+
+        return view('admin/admincetakpdf', compact('items'));
     }
 }

@@ -143,8 +143,8 @@
                               <div class="action-user d-flex justify-content-end align-items-center">
                                    <a href="/profileuser"
                                         class="btn btn-secondary mt-3" style="margin-right: 4px;">Kembali</a>
-                                   <a href="/detailpendaftaran/user/cetak/pdf"
-                                        class="btn btn-primary mt-3">Cetak</a>
+                                   <a href="/usercetakpdf"
+                                        class="btn btn-primary mt-3" target="_blank">Cetak</a>
                               </div>
                          </form>
                     </div>
